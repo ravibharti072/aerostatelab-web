@@ -1,225 +1,1336 @@
-import { Link } from 'react-router-dom';
+import { useEffect, type ReactNode } from "react";
+import { Link } from "react-router-dom";
+
 import {
-  Users,
-  Calendar,
-  Stethoscope,
-  CreditCard,
+  AlertTriangle,
+  ArrowLeft,
+  ArrowRight,
+  BarChart3,
+  BedDouble,
+  BellRing,
+  Building2,
+  CalendarClock,
+  CalendarDays,
+  Check,
+  CheckCircle2,
+  ClipboardCheck,
+  Cloud,
+  FileCheck2,
+  FileText,
+  IndianRupee,
+  Layers3,
+  LockKeyhole,
+  MessageSquareText,
+  MonitorSmartphone,
+  PackageSearch,
   Pill,
-  FlaskConical,
-  Briefcase,
-  Bed,
-} from 'lucide-react';
+  Receipt,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Stethoscope,
+  UserRoundCheck,
+  Users,
+  Workflow,
+} from "lucide-react";
+
+interface FeatureItem {
+  title: string;
+  description: string;
+  points: string[];
+  icon: ReactNode;
+  iconStyle: string;
+  accentStyle: string;
+  glowStyle: string;
+}
+
+interface WorkflowStep {
+  number: string;
+  stage: string;
+  title: string;
+  description: string;
+  icon: ReactNode;
+  style: string;
+}
+
+interface RoleViewItem {
+  role: string;
+  description: string;
+  permissions: string[];
+  style: string;
+}
+
+interface AdvantageItem {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  style: string;
+}
+
+interface ChallengeItem {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  style: string;
+}
+
+function ArrowIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <ArrowRight
+      className={`h-4 w-4 flex-none ${className}`}
+      strokeWidth={1.9}
+      aria-hidden="true"
+    />
+  );
+}
+
+function CheckIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <Check
+      className={`h-4 w-4 ${className}`}
+      strokeWidth={2.3}
+      aria-hidden="true"
+    />
+  );
+}
 
 function HealthcareIndustry() {
-  // Reduced tags
-  const tags = ["Patient Management", "Clinical Workflows", "Billing", "Medical Inventory"];
+  useEffect(() => {
+    document.title =
+      "Healthcare Operations Management Software | AeroState Lab";
 
-  // Core features – each with icon, short desc, and only 4 points
-  const coreFeatures = [
-    { icon: <Users className="w-5 h-5" />, title: "Patient Management", desc: "Complete patient lifecycle.", points: ["Patient registration & EHR", "Medical history tracking", "Insurance management", "Case file management"] },
-    { icon: <Calendar className="w-5 h-5" />, title: "Appointment Scheduling", desc: "Optimize patient appointments.", points: ["Online booking", "Doctor schedule management", "Automated reminders", "Queue management"] },
-    { icon: <Stethoscope className="w-5 h-5" />, title: "Clinical Workflows", desc: "Support medical staff.", points: ["Consultation management", "Diagnosis recording", "Prescription management", "Lab test integration"] },
-    { icon: <CreditCard className="w-5 h-5" />, title: "Billing & Insurance", desc: "Streamline healthcare billing.", points: ["Patient billing", "Insurance claims", "Payment tracking", "Cost estimation"] },
-    { icon: <Pill className="w-5 h-5" />, title: "Pharmacy & Inventory", desc: "Manage medicines & supplies.", points: ["Stock & expiry tracking", "Batch management", "Automated replenishment", "Emergency alerts"] },
-    { icon: <FlaskConical className="w-5 h-5" />, title: "Laboratory Management", desc: "Automate lab workflows.", points: ["Test order management", "Sample tracking", "Diagnostic reports", "Result verification"] },
-    { icon: <Briefcase className="w-5 h-5" />, title: "Staff & HR Management", desc: "Manage healthcare workforce.", points: ["Staff scheduling", "Attendance tracking", "Payroll integration", "Performance monitoring"] },
-    { icon: <Bed className="w-5 h-5" />, title: "Inpatient & Bed Management", desc: "Optimize bed allocation.", points: ["Bed allocation tracking", "Admission/discharge", "ICU management", "Resource utilization"] }
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, []);
+
+  const heroPoints = [
+    "Patient registration and visit records",
+    "Appointments and doctor scheduling",
+    "Billing and payment visibility",
+    "Medical stock and staff coordination",
   ];
 
-  // Advanced capabilities – condensed to 4 main areas
-  const capabilities = [
-    { title: "Healthcare Automation", points: ["Appointment reminders", "Billing automation", "Lab report automation", "Inventory replenishment"] },
-    { title: "Analytics & Reporting", points: ["Admission & occupancy", "Revenue & billing", "Inventory usage", "Clinical outcomes"] },
-    { title: "Real-Time Visibility", points: ["Patient tracking", "Bed occupancy", "Emergency tracking", "Resource availability"] },
-    { title: "Security & Compliance", points: ["Role-based access", "HIPAA/GDPR ready", "Audit logs", "Data encryption"] }
+  const challenges: ChallengeItem[] = [
+    {
+      title: "Fragmented Patient Records",
+      description:
+        "Patient details, visit history, documents, payments, and follow-up information remain spread across files and registers.",
+      icon: <Workflow className="h-5 w-5" />,
+      style: "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      title: "Appointment Coordination Gaps",
+      description:
+        "Reception teams struggle to manage doctor availability, appointments, cancellations, queues, and follow-up dates consistently.",
+      icon: <CalendarClock className="h-5 w-5" />,
+      style: "border-cyan-200 bg-cyan-50 text-cyan-700",
+    },
+    {
+      title: "Limited Visit Visibility",
+      description:
+        "Doctors and authorised staff cannot quickly review the permitted information related to a patient's previous visits.",
+      icon: <Stethoscope className="h-5 w-5" />,
+      style: "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      title: "Billing and Payment Confusion",
+      description:
+        "Consultation charges, service amounts, received payments, pending balances, and payment references are recorded separately.",
+      icon: <IndianRupee className="h-5 w-5" />,
+      style: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      title: "Medical Stock Gaps",
+      description:
+        "Medicines, consumables, equipment items, available quantities, and expiry information are difficult to monitor reliably.",
+      icon: <Pill className="h-5 w-5" />,
+      style: "border-amber-200 bg-amber-50 text-amber-700",
+    },
+    {
+      title: "Unclear Staff Responsibility",
+      description:
+        "Patient follow-ups, administrative tasks, stock actions, document checks, and operational issues lack clear ownership.",
+      icon: <Users className="h-5 w-5" />,
+      style: "border-rose-200 bg-rose-50 text-rose-700",
+    },
   ];
 
-  // Benefits – measurable impacts
-  const benefits = [
-    { metric: "40%", desc: "Faster patient admission" },
-    { metric: "30%", desc: "Reduced billing errors" },
-    { metric: "50%", desc: "Better resource utilization" },
-    { metric: "24/7", desc: "Real-time patient visibility" }
+  const coreFeatures: FeatureItem[] = [
+    {
+      title: "Patient Registration and Profiles",
+      description:
+        "Create structured patient profiles with authorised contact, identification, visit, document, and follow-up information.",
+      points: [
+        "Patient and contact details",
+        "Unique patient records",
+        "Document and note storage",
+        "Searchable visit history",
+      ],
+      icon: <UserRoundCheck className="h-6 w-6" />,
+      iconStyle: "border-blue-200 bg-blue-50 text-blue-700",
+      accentStyle: "from-blue-500 via-cyan-500 to-sky-500",
+      glowStyle: "bg-blue-300/30",
+    },
+    {
+      title: "Appointments and Scheduling",
+      description:
+        "Coordinate appointments according to doctor availability, department, date, time, status, and patient requirements.",
+      points: [
+        "Doctor schedule records",
+        "Appointment date and time",
+        "Visit status tracking",
+        "Cancellation and rescheduling",
+      ],
+      icon: <CalendarDays className="h-6 w-6" />,
+      iconStyle: "border-violet-200 bg-violet-50 text-violet-700",
+      accentStyle: "from-violet-500 via-purple-500 to-indigo-500",
+      glowStyle: "bg-violet-300/30",
+    },
+    {
+      title: "Consultation and Visit Records",
+      description:
+        "Maintain authorised records of consultations, observations, follow-up instructions, documents, and related services.",
+      points: [
+        "Visit and consultation history",
+        "Doctor notes and observations",
+        "Follow-up date records",
+        "Attached reports and documents",
+      ],
+      icon: <Stethoscope className="h-6 w-6" />,
+      iconStyle: "border-emerald-200 bg-emerald-50 text-emerald-700",
+      accentStyle: "from-emerald-500 via-teal-500 to-cyan-500",
+      glowStyle: "bg-emerald-300/30",
+    },
+    {
+      title: "Billing and Payment Tracking",
+      description:
+        "Connect consultation, service, room, test, medicine, or other permitted charges with patient payment records.",
+      points: [
+        "Service and charge records",
+        "Received payment entries",
+        "Pending balance visibility",
+        "Payment method and reference",
+      ],
+      icon: <Receipt className="h-6 w-6" />,
+      iconStyle: "border-amber-200 bg-amber-50 text-amber-700",
+      accentStyle: "from-amber-500 via-orange-500 to-yellow-500",
+      glowStyle: "bg-amber-300/30",
+    },
+    {
+      title: "Medicine and Supply Records",
+      description:
+        "Maintain structured inventory information for medicines, consumables, clinical supplies, and other operational items.",
+      points: [
+        "Item and category records",
+        "Available quantity visibility",
+        "Batch and expiry information",
+        "Issue and usage records",
+      ],
+      icon: <Pill className="h-6 w-6" />,
+      iconStyle: "border-cyan-200 bg-cyan-50 text-cyan-700",
+      accentStyle: "from-cyan-500 via-sky-500 to-blue-500",
+      glowStyle: "bg-cyan-300/30",
+    },
+    {
+      title: "Staff Tasks and Reporting",
+      description:
+        "Assign operational responsibilities and review appointments, visits, payments, stock, tasks, and activity summaries.",
+      points: [
+        "Department-based task assignment",
+        "Priority and due dates",
+        "Operational dashboards",
+        "Date and status filters",
+      ],
+      icon: <BarChart3 className="h-6 w-6" />,
+      iconStyle: "border-rose-200 bg-rose-50 text-rose-700",
+      accentStyle: "from-rose-500 via-pink-500 to-orange-500",
+      glowStyle: "bg-rose-300/30",
+    },
   ];
 
-  // Why choose – 4 simple reasons
-  const whyChoose = [
-    "Scalable for clinics to hospital networks",
-    "End-to-end healthcare operations",
-    "Real-time intelligence dashboards",
-    "Cloud & mobile accessibility"
+  const workflowSteps: WorkflowStep[] = [
+    {
+      number: "01",
+      stage: "Register",
+      title: "Create the Patient Record",
+      description:
+        "Record permitted patient information, contact details, identification, documents, notes, and the reason for the visit.",
+      icon: <UserRoundCheck className="h-5 w-5" />,
+      style: "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      number: "02",
+      stage: "Schedule",
+      title: "Book the Appointment",
+      description:
+        "Select the department, doctor, date, time, appointment type, visit reason, and current appointment status.",
+      icon: <CalendarDays className="h-5 w-5" />,
+      style: "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      number: "03",
+      stage: "Receive",
+      title: "Manage Patient Arrival",
+      description:
+        "Confirm arrival, review registration information, update appointment status, and coordinate the permitted queue workflow.",
+      icon: <ClipboardCheck className="h-5 w-5" />,
+      style: "border-cyan-200 bg-cyan-50 text-cyan-700",
+    },
+    {
+      number: "04",
+      stage: "Consult",
+      title: "Maintain the Visit Record",
+      description:
+        "Authorised medical users can record consultation information, observations, documents, services, and follow-up instructions.",
+      icon: <Stethoscope className="h-5 w-5" />,
+      style: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      number: "05",
+      stage: "Bill",
+      title: "Record Charges and Payments",
+      description:
+        "Add permitted service charges, record payments, maintain payment methods and references, and review pending amounts.",
+      icon: <IndianRupee className="h-5 w-5" />,
+      style: "border-amber-200 bg-amber-50 text-amber-700",
+    },
+    {
+      number: "06",
+      stage: "Follow Up",
+      title: "Schedule the Next Action",
+      description:
+        "Record the next appointment, review date, assigned responsibility, patient communication status, or pending document.",
+      icon: <BellRing className="h-5 w-5" />,
+      style: "border-indigo-200 bg-indigo-50 text-indigo-700",
+    },
+    {
+      number: "07",
+      stage: "Review",
+      title: "Monitor Healthcare Operations",
+      description:
+        "Review appointment activity, patient visits, payments, stock, staff tasks, and operational status through connected reports.",
+      icon: <BarChart3 className="h-5 w-5" />,
+      style: "border-rose-200 bg-rose-50 text-rose-700",
+    },
   ];
 
-  // Industries served – condensed list
-  const industries = [
-    "Multi-specialty Hospitals", "Clinics & Polyclinics", "Diagnostic Centers",
-    "Pathology Labs", "Pharmacies", "Nursing Homes", "Telemedicine"
+  const roleViews: RoleViewItem[] = [
+    {
+      role: "Owner and Admin",
+      description:
+        "Complete authorised visibility across healthcare locations, departments, staff, payments, inventory, and operations.",
+      permissions: [
+        "Manage operational settings",
+        "Review permitted reports",
+        "View payments and stock",
+        "Manage users and permissions",
+      ],
+      style: "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      role: "Reception Team",
+      description:
+        "Manage permitted patient registration, appointments, arrival status, contact details, and payment collection.",
+      permissions: [
+        "Create patient profiles",
+        "Book and update appointments",
+        "Manage arrival status",
+        "Record permitted payments",
+      ],
+      style: "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      role: "Doctors and Clinical Staff",
+      description:
+        "Access permitted patient, appointment, visit, follow-up, and assigned operational information.",
+      permissions: [
+        "View assigned appointments",
+        "Update permitted visit records",
+        "Add follow-up information",
+        "Review authorised history",
+      ],
+      style: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      role: "Accounts and Inventory",
+      description:
+        "Access authorised billing, payment, medicine, consumable, supplier, and stock information.",
+      permissions: [
+        "Review service charges",
+        "Record received payments",
+        "Maintain permitted stock",
+        "View authorised reports",
+      ],
+      style: "border-amber-200 bg-amber-50 text-amber-700",
+    },
+  ];
+
+  const advantages: AdvantageItem[] = [
+    {
+      title: "Connected Patient Records",
+      description:
+        "Keep registration, appointments, visits, documents, payments, and follow-up information connected to one patient.",
+      icon: <Layers3 className="h-5 w-5" />,
+      style: "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      title: "Multi-Location Visibility",
+      description:
+        "Review permitted appointment, payment, staff, inventory, and operational information across clinics or branches.",
+      icon: <Building2 className="h-5 w-5" />,
+      style: "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      title: "Searchable Information",
+      description:
+        "Locate patients, appointments, visits, payments, stock items, tasks, and documents without searching separate registers.",
+      icon: <Search className="h-5 w-5" />,
+      style: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      title: "Role-Based Control",
+      description:
+        "Limit patient, medical, payment, stock, staff, and management information according to each user's responsibility.",
+      icon: <LockKeyhole className="h-5 w-5" />,
+      style: "border-cyan-200 bg-cyan-50 text-cyan-700",
+    },
+    {
+      title: "Payment Accountability",
+      description:
+        "Maintain clearer records of service charges, received payments, pending balances, dates, methods, and references.",
+      icon: <IndianRupee className="h-5 w-5" />,
+      style: "border-rose-200 bg-rose-50 text-rose-700",
+    },
+    {
+      title: "Operational Reporting",
+      description:
+        "Use connected records to understand appointments, visits, collections, stock, staff tasks, and pending work.",
+      icon: <BarChart3 className="h-5 w-5" />,
+      style: "border-amber-200 bg-amber-50 text-amber-700",
+    },
+  ];
+
+  const suitableFor = [
+    "Private clinics",
+    "Polyclinics",
+    "Diagnostic centres",
+    "Dental clinics",
+    "Nursing homes",
+    "Multi-branch healthcare providers",
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Animation keyframes (matching other pages) */}
-      <style>{`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes gradient-x {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-fade-in-up { opacity: 0; animation: fade-in-up 0.7s ease-out forwards; }
-        .animate-delay-100 { animation-delay: 0.1s; }
-        .animate-delay-200 { animation-delay: 0.2s; }
-        .animate-delay-300 { animation-delay: 0.3s; }
-        .animate-gradient-x { background-size: 200% 200%; animation: gradient-x 3s ease infinite; }
-        @keyframes pulse-soft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
-        .animate-pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
-      `}</style>
+    <div className="overflow-hidden bg-white text-slate-900">
+      {/* Hero */}
+      <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-blue-50 via-white to-teal-50">
+        <div
+          className="pointer-events-none absolute inset-0 -z-20 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+          }}
+        />
 
-      {/* HERO – gradient background, back link */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-white pt-28 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/50 via-white to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-up">
-          <Link to="/industries" className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 mb-6 transition-colors">
-            ← Back to Industries
-          </Link>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Smart Healthcare Management{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 animate-gradient-x">
-              & Hospital ERP
-            </span>
-          </h1>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Streamline patient care, clinical workflows, billing, inventory, and administration with a secure, intelligent platform.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {tags.map((tag) => (
-              <span key={tag} className="px-4 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 shadow-sm">
-                {tag}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -left-44 -top-52 h-[540px] w-[540px] rounded-full bg-blue-300/25 blur-[140px]" />
+
+          <div className="absolute -bottom-52 right-[-130px] h-[570px] w-[570px] rounded-full bg-teal-300/25 blur-[145px]" />
+        </div>
+
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.06fr_0.94fr] lg:gap-20 lg:px-10 lg:py-24 xl:px-16">
+          {/* Hero content */}
+          <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
+            <Link
+              to="/industries"
+              className="group inline-flex items-center gap-2 text-sm font-bold text-blue-600 transition-colors hover:text-blue-700"
+            >
+              <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+
+              Back to Industries
+            </Link>
+
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/85 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-700 shadow-sm backdrop-blur sm:text-xs">
+                <Sparkles
+                  className="h-4 w-4"
+                  strokeWidth={1.9}
+                />
+
+                Healthcare Operations Software
               </span>
-            ))}
+            </div>
+
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
+              Connect Every Patient,
+
+              <span className="block">
+                Appointment, Visit and Team
+              </span>
+
+              <span className="block bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+                Through One Platform.
+              </span>
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:mx-0">
+              Manage patient registration, appointments, visit
+              records, billing, payments, medical stock, staff tasks,
+              and operational reporting through a configurable
+              cloud-based healthcare platform.
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {heroPoints.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 text-left text-sm font-semibold text-slate-700 shadow-sm backdrop-blur"
+                >
+                  <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                    <CheckIcon />
+                  </span>
+
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <a
+                href="#healthcare-features"
+                className="group inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl sm:w-auto sm:text-base"
+              >
+                Explore Healthcare Features
+
+                <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+
+              <Link
+                to="/contact"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl border border-slate-200 bg-white/90 px-7 py-3.5 text-sm font-bold text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:text-blue-700 hover:shadow-md sm:w-auto sm:text-base"
+              >
+                Discuss Your Requirements
+              </Link>
+            </div>
+          </div>
+
+          {/* Healthcare dashboard preview */}
+          <div className="relative mx-auto w-full max-w-[610px]">
+            <div className="absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-300/25 blur-[100px]" />
+
+            <div className="relative overflow-hidden rounded-[26px] border border-slate-200 bg-white/95 shadow-[0_30px_90px_rgba(15,23,42,0.16)] backdrop-blur">
+              {/* Browser bar */}
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-rose-300" />
+                  <span className="h-3 w-3 rounded-full bg-amber-300" />
+                  <span className="h-3 w-3 rounded-full bg-emerald-300" />
+                </div>
+
+                <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+
+                  Healthcare Dashboard · Example
+                </div>
+              </div>
+
+              <div className="p-4 sm:p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                      Clinic Operations
+                    </p>
+
+                    <h2 className="mt-1 text-xl font-bold text-slate-900">
+                      Healthcare Overview
+                    </h2>
+                  </div>
+
+                  <span className="rounded-xl border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700">
+                    Today
+                  </span>
+                </div>
+
+                <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {[
+                    {
+                      label: "Appointments",
+                      value: "42",
+                      icon: <CalendarDays className="h-4 w-4" />,
+                      style:
+                        "border-blue-100 bg-blue-50 text-blue-700",
+                    },
+                    {
+                      label: "Checked In",
+                      value: "28",
+                      icon: <UserRoundCheck className="h-4 w-4" />,
+                      style:
+                        "border-emerald-100 bg-emerald-50 text-emerald-700",
+                    },
+                    {
+                      label: "Pending",
+                      value: "9",
+                      icon: <CalendarClock className="h-4 w-4" />,
+                      style:
+                        "border-violet-100 bg-violet-50 text-violet-700",
+                    },
+                    {
+                      label: "Follow-Ups",
+                      value: "12",
+                      icon: <BellRing className="h-4 w-4" />,
+                      style:
+                        "border-amber-100 bg-amber-50 text-amber-700",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className={`rounded-2xl border p-3 ${item.style}`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-current/10 bg-white/80">
+                          {item.icon}
+                        </span>
+
+                        <span className="text-lg font-extrabold sm:text-xl">
+                          {item.value}
+                        </span>
+                      </div>
+
+                      <p className="mt-3 text-[8px] font-bold uppercase tracking-[0.08em] opacity-70">
+                        {item.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                        Current Appointment
+                      </p>
+
+                      <p className="mt-1 text-sm font-bold text-slate-800">
+                        Priya Sharma
+                      </p>
+
+                      <p className="mt-1 text-[10px] font-semibold text-slate-500">
+                        General Consultation · Dr. Mehta
+                      </p>
+                    </div>
+
+                    <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-[9px] font-bold uppercase text-emerald-700">
+                      Checked In
+                    </span>
+                  </div>
+
+                  <div className="mt-4 grid grid-cols-3 gap-2">
+                    {[
+                      {
+                        label: "Time",
+                        value: "11:30 AM",
+                        color: "bg-blue-50 text-blue-700",
+                      },
+                      {
+                        label: "Visit",
+                        value: "Follow-Up",
+                        color: "bg-violet-50 text-violet-700",
+                      },
+                      {
+                        label: "Payment",
+                        value: "Pending",
+                        color: "bg-amber-50 text-amber-700",
+                      },
+                    ].map((item) => (
+                      <div
+                        key={item.label}
+                        className={`rounded-xl px-2 py-3 text-center ${item.color}`}
+                      >
+                        <p className="text-[8px] font-bold uppercase tracking-[0.08em] opacity-70">
+                          {item.label}
+                        </p>
+
+                        <p className="mt-1 text-[9px] font-bold uppercase">
+                          {item.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-[1.1fr_0.9fr]">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                          Appointment Status
+                        </p>
+
+                        <p className="mt-1 text-sm font-bold text-slate-800">
+                          Today&apos;s activity
+                        </p>
+                      </div>
+
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
+                        <Stethoscope className="h-4 w-4" />
+                      </span>
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      {[
+                        {
+                          label: "Completed",
+                          value: "21",
+                          width: "72%",
+                          color: "bg-emerald-500",
+                        },
+                        {
+                          label: "In Progress",
+                          value: "7",
+                          width: "42%",
+                          color: "bg-blue-500",
+                        },
+                        {
+                          label: "Waiting",
+                          value: "9",
+                          width: "34%",
+                          color: "bg-amber-500",
+                        },
+                      ].map((item) => (
+                        <div key={item.label}>
+                          <div className="flex justify-between text-[10px] font-semibold text-slate-500">
+                            <span>{item.label}</span>
+
+                            <span>{item.value}</span>
+                          </div>
+
+                          <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-slate-100">
+                            <div
+                              className={`h-full rounded-full ${item.color}`}
+                              style={{
+                                width: item.width,
+                              }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                      Stock Attention
+                    </p>
+
+                    <div className="mt-4 space-y-3">
+                      {[
+                        {
+                          label: "Syringes",
+                          status: "Available",
+                          style:
+                            "bg-emerald-50 text-emerald-700",
+                        },
+                        {
+                          label: "Gloves",
+                          status: "Low",
+                          style:
+                            "bg-amber-50 text-amber-700",
+                        },
+                        {
+                          label: "Test Kits",
+                          status: "Review",
+                          style:
+                            "bg-rose-50 text-rose-700",
+                        },
+                      ].map((item) => (
+                        <div
+                          key={item.label}
+                          className="flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3 py-2.5"
+                        >
+                          <span className="text-[10px] font-semibold text-slate-600">
+                            {item.label}
+                          </span>
+
+                          <span
+                            className={`rounded-full px-2 py-1 text-[8px] font-bold uppercase ${item.style}`}
+                          >
+                            {item.status}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-emerald-200 bg-white text-emerald-700">
+                    <CheckCircle2 className="h-5 w-5" />
+                  </span>
+
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-slate-800">
+                      Visit record updated
+                    </p>
+
+                    <p className="mt-1 truncate text-[10px] text-slate-500">
+                      Appointment and patient history were refreshed
+                    </p>
+                  </div>
+
+                  <span className="ml-auto flex-none rounded-full bg-white px-2 py-1 text-[8px] font-bold uppercase text-emerald-600">
+                    Updated
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-xl sm:flex">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <PackageSearch className="h-5 w-5" />
+              </span>
+
+              <div>
+                <p className="text-xs font-bold text-slate-800">
+                  Stock item requires review
+                </p>
+
+                <p className="mt-0.5 text-[9px] text-slate-500">
+                  Authorised inventory users can take action
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CORE FEATURES – card grid with icons */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl font-extrabold text-gray-900">Core Healthcare Modules</h2>
-          <p className="text-gray-500 mt-2">Complete hospital management toolkit.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreFeatures.map((feat, i) => (
+      {/* Summary strip */}
+      <section className="border-y border-slate-300 bg-slate-100">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-2 gap-px bg-slate-300 px-px sm:grid-cols-4">
+          {[
+            {
+              title: "Register",
+              value: "Patients",
+              icon: <UserRoundCheck className="h-5 w-5" />,
+            },
+            {
+              title: "Manage",
+              value: "Appointments",
+              icon: <CalendarDays className="h-5 w-5" />,
+            },
+            {
+              title: "Record",
+              value: "Payments",
+              icon: <Receipt className="h-5 w-5" />,
+            },
+            {
+              title: "Monitor",
+              value: "Stock",
+              icon: <Pill className="h-5 w-5" />,
+            },
+          ].map((item) => (
             <div
-              key={i}
-              className="group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 animate-fade-in-up"
-              style={{ animationDelay: `${(i % 3) * 0.1}s` }}
+              key={item.title}
+              className="flex min-h-[116px] items-center gap-4 bg-slate-100 px-5 py-5 sm:px-6"
             >
-              <div className="absolute left-0 top-0 h-full w-1 bg-blue-500 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex items-start gap-3 mb-4">
-                <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 shrink-0">
-                  {feat.icon}
-                </span>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">{feat.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{feat.desc}</p>
-                </div>
+              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl border border-blue-200 bg-white text-blue-600 shadow-sm">
+                {item.icon}
+              </span>
+
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                  {item.title}
+                </p>
+
+                <p className="mt-1 text-sm font-bold text-slate-900 sm:text-base">
+                  {item.value}
+                </p>
               </div>
-              <ul className="space-y-2 mt-4">
-                {feat.points.map((p, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {p}
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ADVANCED CAPABILITIES – light blue background */}
-      <section className="bg-blue-50/50 border-y border-blue-100 py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl font-extrabold text-gray-900">Advanced Healthcare Architecture</h2>
-            <p className="text-gray-500 mt-2">Automation, analytics, visibility, and compliance.</p>
+      {/* Challenges */}
+      <section className="border-b border-slate-200 bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-rose-600">
+              Healthcare Workflow Challenges
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Replace Disconnected Healthcare Records With One System
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Healthcare operations become difficult to coordinate
+              when patients, appointments, visits, billing, inventory,
+              and staff responsibilities remain separated across
+              registers, spreadsheets, and messages.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {capabilities.map((cap, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{cap.title}</h3>
-                <ul className="space-y-3">
-                  {cap.points.map((p, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-gray-600">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">✓</span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {challenges.map((item) => (
+              <article
+                key={item.title}
+                className="group flex items-start gap-4 rounded-[20px] border border-slate-200 bg-slate-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-white hover:shadow-lg"
+              >
+                <span
+                  className={`flex h-11 w-11 flex-none items-center justify-center rounded-xl border ${item.style}`}
+                >
+                  {item.icon}
+                </span>
+
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* BENEFITS + WHY CHOOSE + INDUSTRIES – two-column layout */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left: Measurable Impact */}
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900 mb-8 animate-fade-in-up">Measurable Impact</h2>
-            <div className="space-y-5">
-              {benefits.map((b, i) => (
-                <div key={i} className="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                  <div className="text-3xl font-extrabold text-blue-600 w-24 shrink-0">{b.metric}</div>
-                  <p className="text-gray-600">{b.desc}</p>
-                </div>
-              ))}
-            </div>
+      {/* Core features */}
+      <section
+        id="healthcare-features"
+        className="relative isolate scroll-mt-24 overflow-hidden bg-slate-50"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #0f172a 1px, transparent 1px)",
+            backgroundSize: "18px 18px",
+          }}
+        />
+
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
+              Core Healthcare Modules
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Manage Every Operational Layer of Patient Service
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Connect patient registration, appointments, visits,
+              payments, stock, staff responsibilities, and reporting
+              through one structured healthcare operations system.
+            </p>
           </div>
 
-          {/* Right: Why Choose + Industries */}
-          <div className="space-y-10">
-            <div>
-              <h2 className="text-2xl font-extrabold text-gray-900 mb-6 animate-fade-in-up">Why Choose Our Solution</h2>
-              <div className="grid grid-cols-1 gap-3">
-                {whyChoose.map((reason, idx) => (
-                  <div key={reason} className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
-                    <span className="text-blue-500 text-lg">▹</span>
-                    <span className="text-gray-700 font-medium">{reason}</span>
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {coreFeatures.map((feature) => (
+              <article
+                key={feature.title}
+                className="group relative h-full"
+              >
+                <div
+                  className={`pointer-events-none absolute -inset-2 rounded-[30px] opacity-10 blur-2xl transition-opacity duration-300 group-hover:opacity-40 ${feature.glowStyle}`}
+                />
+
+                <div className="relative flex h-full min-h-[390px] flex-col overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-[0_10px_35px_rgba(15,23,42,0.055)] transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-slate-300 group-hover:shadow-[0_22px_55px_rgba(15,23,42,0.11)]">
+                  <div
+                    className={`h-1 w-full bg-gradient-to-r ${feature.accentStyle}`}
+                  />
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <span
+                      className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${feature.iconStyle}`}
+                    >
+                      {feature.icon}
+                    </span>
+
+                    <h3 className="mt-5 text-xl font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                      {feature.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {feature.description}
+                    </p>
+
+                    <div className="mt-5 space-y-3 border-t border-slate-100 pt-5">
+                      {feature.points.map((point) => (
+                        <div
+                          key={point}
+                          className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                        >
+                          <span className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                            <CheckIcon className="h-3.5 w-3.5" />
+                          </span>
+
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Workflow */}
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-20">
+            <div className="lg:sticky lg:top-28">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-violet-600">
+                Connected Patient Workflow
+              </span>
+
+              <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+                From Patient Registration to Ongoing Follow-Up
+              </h2>
+
+              <p className="mt-5 text-base leading-8 text-slate-600">
+                Every stage should preserve the permitted information
+                created before it. This creates one continuous
+                operational record instead of separate registration,
+                appointment, visit, billing, and follow-up files.
+              </p>
+
+              <Link
+                to="/contact"
+                className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-violet-100 bg-violet-50 px-6 py-3 text-sm font-bold text-violet-700 transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:bg-violet-600 hover:text-white"
+              >
+                Discuss Your Healthcare Workflow
+
+                <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </div>
-            <div className="animate-fade-in-up">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Healthcare Providers We Serve</h3>
-              <div className="flex flex-wrap gap-2">
-                {industries.map((ind) => (
-                  <span key={ind} className="px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-sm text-blue-700 font-medium hover:bg-blue-100 transition-colors cursor-default">
-                    {ind}
+
+            <div className="space-y-3">
+              {workflowSteps.map((step, index) => (
+                <article
+                  key={step.number}
+                  className="group flex items-center gap-4 rounded-[20px] border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white hover:shadow-lg sm:p-5"
+                >
+                  <span
+                    className={`flex h-12 w-12 flex-none items-center justify-center rounded-2xl border ${step.style}`}
+                  >
+                    {step.icon}
                   </span>
-                ))}
-              </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-3">
+                      <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                        Step {step.number}
+                      </span>
+
+                      <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.1em] text-slate-500">
+                        {step.stage}
+                      </span>
+
+                      {index < workflowSteps.length - 1 && (
+                        <span className="h-px flex-1 bg-slate-200" />
+                      )}
+                    </div>
+
+                    <h3 className="mt-2 text-base font-bold text-slate-900 sm:text-lg">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-1.5 text-sm leading-6 text-slate-600">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  <ArrowRight className="h-5 w-5 flex-none text-slate-300 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-500" />
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA – matching style */}
-      <section className="max-w-4xl mx-auto px-6 pb-24 text-center">
-        <div className="bg-blue-600 rounded-3xl p-10 shadow-xl shadow-blue-200 animate-fade-in-up">
-          <h2 className="text-3xl font-extrabold text-white mb-4">Transform Your Healthcare Operations</h2>
-          <p className="text-blue-100 mb-8 max-w-xl mx-auto">
-            Modernize hospital and clinical workflows for efficiency, accuracy, and better patient outcomes.
-          </p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 rounded-xl text-sm font-bold hover:bg-blue-50 transition-colors shadow-md animate-pulse-soft">
-            Deploy Healthcare Architecture <span>→</span>
-          </Link>
+      {/* Role access */}
+      <section className="relative isolate overflow-hidden bg-slate-50">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+          }}
+        />
+
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-600">
+              Permission-Based Healthcare Access
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Give Every Healthcare Role the Right Operational View
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Management, reception teams, medical staff, accounts
+              users, and inventory teams require different information
+              and different levels of control.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {roleViews.map((item) => (
+              <article
+                key={item.role}
+                className="group rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl"
+              >
+                <span
+                  className={`inline-flex rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${item.style}`}
+                >
+                  {item.role}
+                </span>
+
+                <p className="mt-5 min-h-[90px] text-sm leading-7 text-slate-600">
+                  {item.description}
+                </p>
+
+                <div className="mt-5 space-y-3 border-t border-slate-100 pt-5">
+                  {item.permissions.map((permission) => (
+                    <div
+                      key={permission}
+                      className="flex items-start gap-2.5 text-xs font-semibold leading-5 text-slate-600"
+                    >
+                      <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                        <CheckIcon className="h-3.5 w-3.5" />
+                      </span>
+
+                      <span>{permission}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advantages */}
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-10 xl:px-16">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
+              Healthcare Platform Advantages
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              One Operational Record for Patient Service
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Replace separate registration files, appointment books,
+              payment sheets, medicine registers, staff task lists,
+              and management reports with one connected cloud
+              platform.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-2">
+              {suitableFor.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {advantages.map((item) => (
+              <article
+                key={item.title}
+                className="group flex items-start gap-4 rounded-[20px] border border-slate-200 bg-slate-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-white hover:shadow-lg"
+              >
+                <span
+                  className={`flex h-11 w-11 flex-none items-center justify-center rounded-xl border ${item.style}`}
+                >
+                  {item.icon}
+                </span>
+
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cloud section */}
+      <section className="relative isolate overflow-hidden bg-slate-950 text-white">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+          }}
+        />
+
+        <div className="pointer-events-none absolute -left-44 top-0 -z-10 h-[480px] w-[480px] rounded-full bg-blue-500/20 blur-[130px]" />
+
+        <div className="pointer-events-none absolute -bottom-52 right-[-100px] -z-10 h-[500px] w-[500px] rounded-full bg-teal-500/15 blur-[135px]" />
+
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20 lg:px-10 lg:py-24 xl:px-16">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-300">
+              <Cloud className="h-4 w-4" />
+
+              Cloud Healthcare Operations
+            </span>
+
+            <h2 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Keep Reception, Medical Staff, Accounts and Management Connected
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-300">
+              Authorised users can access permitted patient,
+              appointment, visit, payment, stock, task, and reporting
+              tools through responsive interfaces across different
+              healthcare locations.
+            </p>
+
+            <Link
+              to="/why-choose-us"
+              className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/15"
+            >
+              Why Choose AeroState
+
+              <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {[
+              {
+                title: "Responsive Healthcare Access",
+                description:
+                  "Access permitted appointments, patient records, payments, tasks, and stock information through phone, tablet, laptop, or desktop.",
+                icon: <MonitorSmartphone className="h-6 w-6" />,
+              },
+              {
+                title: "Secure Role Controls",
+                description:
+                  "Protect patient, visit, payment, staff, inventory, and management information through role-based permissions.",
+                icon: <ShieldCheck className="h-6 w-6" />,
+              },
+              {
+                title: "Centralised Documentation",
+                description:
+                  "Keep patient details, appointment history, visit records, documents, payments, and notes within structured records.",
+                icon: <FileCheck2 className="h-6 w-6" />,
+              },
+              {
+                title: "Expandable Healthcare Modules",
+                description:
+                  "Bed management, pharmacy billing, laboratory workflows, room allocation, or specialised reports can be developed when required.",
+                icon: <BedDouble className="h-6 w-6" />,
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[20px] border border-white/10 bg-white/[0.06] p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/30 hover:bg-white/[0.09]"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-blue-300">
+                  {item.icon}
+                </span>
+
+                <h3 className="mt-5 text-lg font-bold text-white">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="relative isolate overflow-hidden rounded-[28px] bg-gradient-to-r from-blue-700 via-blue-600 to-teal-600 px-6 py-12 text-center shadow-[0_30px_80px_rgba(37,99,235,0.25)] sm:px-10 sm:py-16">
+            <div
+              className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                backgroundSize: "34px 34px",
+              }}
+            />
+
+            <div className="pointer-events-none absolute -left-32 -top-40 -z-10 h-[360px] w-[360px] rounded-full bg-cyan-300/30 blur-[100px]" />
+
+            <div className="pointer-events-none absolute -bottom-48 right-[-100px] -z-10 h-[420px] w-[420px] rounded-full bg-teal-300/30 blur-[110px]" />
+
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-50 backdrop-blur sm:text-xs">
+              <MessageSquareText className="h-4 w-4" />
+
+              Discuss Your Healthcare Workflow
+            </span>
+
+            <h2 className="mx-auto mt-6 max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Build Healthcare Software Around How Your Organisation Actually Operates
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-blue-50">
+              Tell us how patients are registered, how appointments
+              are scheduled, how visits are recorded, how payments are
+              collected, how stock is managed, and where operational
+              delays occur. We will help convert those workflows into
+              one connected cloud platform.
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                to="/contact"
+                className="group inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-blue-700 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-auto sm:text-base"
+              >
+                Request Healthcare Consultation
+
+                <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              <Link
+                to="/services/custom-software-development"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 sm:w-auto sm:text-base"
+              >
+                Explore Custom Development
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

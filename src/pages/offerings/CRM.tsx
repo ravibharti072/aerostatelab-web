@@ -1,225 +1,1258 @@
-import { Link } from 'react-router-dom';
+import { useEffect, type ReactNode } from "react";
+import { Link } from "react-router-dom";
+
 import {
-  Users,
-  TrendingUp,
-  Headphones,
-  Mail,
-  Calendar,
-  Megaphone,
+  ArrowLeft,
+  ArrowRight,
+  BadgeIndianRupee,
   BarChart3,
+  BriefcaseBusiness,
+  Building2,
+  CalendarClock,
+  Check,
+  CheckCircle2,
+  CircleDollarSign,
+  Cloud,
+  FileCheck2,
+  FileText,
+  Filter,
+  GitBranch,
+  Handshake,
+  Layers3,
+  LockKeyhole,
+  Mail,
+  MessageSquareText,
+  MonitorSmartphone,
+  Package,
+  Phone,
+  Search,
+  ShieldCheck,
+  Sparkles,
   Target,
-} from 'lucide-react';
+  UserCheck,
+  UserRoundSearch,
+  Users,
+  Workflow,
+} from "lucide-react";
+
+interface FeatureItem {
+  title: string;
+  description: string;
+  points: string[];
+  icon: ReactNode;
+  iconStyle: string;
+  accentStyle: string;
+  glowStyle: string;
+}
+
+interface PipelineStep {
+  number: string;
+  stage: string;
+  title: string;
+  description: string;
+  icon: ReactNode;
+  style: string;
+}
+
+interface RoleItem {
+  role: string;
+  description: string;
+  permissions: string[];
+  style: string;
+}
+
+interface AdvantageItem {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  style: string;
+}
+
+function ArrowIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <ArrowRight
+      className={`h-4 w-4 flex-none ${className}`}
+      strokeWidth={1.9}
+      aria-hidden="true"
+    />
+  );
+}
+
+function CheckIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <Check
+      className={`h-4 w-4 ${className}`}
+      strokeWidth={2.3}
+      aria-hidden="true"
+    />
+  );
+}
 
 function CRM() {
-  // Reduced, scannable tags
-  const tags = ["Lead Management", "Sales Pipeline", "Customer Support", "Analytics"];
+  useEffect(() => {
+    document.title =
+      "Sales CRM and Lead Management Software | AeroState Lab";
 
-  // Core features – each with icon, short desc, and only 4 key points
-  const coreFeatures = [
-    { icon: <Target className="w-5 h-5" />, title: "Lead Management", desc: "Capture and nurture leads efficiently.", points: ["Lead capture & source tracking", "Qualification workflows", "Automated assignment", "Conversion tracking"] },
-    { icon: <TrendingUp className="w-5 h-5" />, title: "Sales Pipeline", desc: "Real-time visibility into sales progress.", points: ["Opportunity tracking", "Pipeline visualization", "Revenue forecasting", "Quote & proposal management"] },
-    { icon: <Users className="w-5 h-5" />, title: "Customer Management", desc: "Centralized customer database.", points: ["360° customer profiles", "Interaction history", "Segmentation tools", "Account relationship mgmt"] },
-    { icon: <Mail className="w-5 h-5" />, title: "Communication & Engagement", desc: "Multi-channel customer engagement.", points: ["Email & SMS integration", "Automated follow-ups", "Call scheduling", "Campaign workflows"] },
-    { icon: <Headphones className="w-5 h-5" />, title: "Support & Ticketing", desc: "Efficient customer service.", points: ["Ticket management", "SLA tracking", "Multi-channel support", "Satisfaction monitoring"] },
-    { icon: <Calendar className="w-5 h-5" />, title: "Task & Activity Management", desc: "Coordinate team activities.", points: ["Task assignment", "Calendar integration", "Reminders & notifications", "Collaboration tools"] },
-    { icon: <Megaphone className="w-5 h-5" />, title: "Marketing Campaigns", desc: "Plan and track campaigns.", points: ["Campaign planning", "Targeted segmentation", "Email marketing", "Performance analytics"] },
-    { icon: <BarChart3 className="w-5 h-5" />, title: "Analytics & Insights", desc: "Data-driven decisions.", points: ["Customer behavior analytics", "Sales dashboards", "Retention analysis", "Forecasting reports"] }
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, []);
+
+  const heroPoints = [
+    "Lead creation and assignment",
+    "Stage-based sales pipeline",
+    "Follow-up and proposal tracking",
+    "Conversion, delivery and payment connection",
   ];
 
-  // Advanced capabilities – condensed to 4 main areas
-  const capabilities = [
-    { title: "CRM Automation", points: ["Automated lead assignment", "Follow-up automation", "Workflow approvals", "Email campaign automation"] },
-    { title: "Omnichannel Experience", points: ["Email & SMS", "Live chat & social", "Phone call logging", "Customer portal"] },
-    { title: "Mobile CRM", points: ["Mobile lead management", "Activity tracking", "Real-time updates", "Mobile dashboards"] },
-    { title: "Security & Access", points: ["Role-based access", "Audit trails", "Data encryption", "Secure authentication"] }
+  const coreFeatures: FeatureItem[] = [
+    {
+      title: "Lead Capture",
+      description:
+        "Create structured sales records with the information required for future follow-up and conversion.",
+      points: [
+        "Customer and company details",
+        "Phone and email records",
+        "Software product selection",
+        "Lead source and priority",
+      ],
+      icon: <UserRoundSearch className="h-6 w-6" />,
+      iconStyle:
+        "border-blue-200 bg-blue-50 text-blue-700",
+      accentStyle:
+        "from-blue-500 via-cyan-500 to-sky-500",
+      glowStyle: "bg-blue-300/30",
+    },
+    {
+      title: "Sales Pipeline",
+      description:
+        "Move every opportunity through a clearly defined sales journey instead of relying on memory.",
+      points: [
+        "New and contacted stages",
+        "Interested and proposal stages",
+        "Converted and delivered stages",
+        "Completed, lost and not-interested outcomes",
+      ],
+      icon: <GitBranch className="h-6 w-6" />,
+      iconStyle:
+        "border-violet-200 bg-violet-50 text-violet-700",
+      accentStyle:
+        "from-violet-500 via-purple-500 to-indigo-500",
+      glowStyle: "bg-violet-300/30",
+    },
+    {
+      title: "Sales Representative Assignment",
+      description:
+        "Connect each lead with the responsible sales user and maintain clear ownership.",
+      points: [
+        "Assign sales representatives",
+        "Sales users view their own leads",
+        "Admin visibility across all leads",
+        "Created-by user tracking",
+      ],
+      icon: <UserCheck className="h-6 w-6" />,
+      iconStyle:
+        "border-cyan-200 bg-cyan-50 text-cyan-700",
+      accentStyle:
+        "from-cyan-500 via-sky-500 to-blue-500",
+      glowStyle: "bg-cyan-300/30",
+    },
+    {
+      title: "Follow-Up Management",
+      description:
+        "Record the next required action so opportunities do not disappear after the first conversation.",
+      points: [
+        "Follow-up date selection",
+        "Contact status tracking",
+        "Proposal-sent tracking",
+        "Lead notes and updates",
+      ],
+      icon: <CalendarClock className="h-6 w-6" />,
+      iconStyle:
+        "border-emerald-200 bg-emerald-50 text-emerald-700",
+      accentStyle:
+        "from-emerald-500 via-teal-500 to-cyan-500",
+      glowStyle: "bg-emerald-300/30",
+    },
+    {
+      title: "Sales Value Tracking",
+      description:
+        "Record expected opportunity value early and confirm the final amount when the sale converts.",
+      points: [
+        "Optional expected amount",
+        "Proposal amount support",
+        "Final sale amount",
+        "Converted sales reporting",
+      ],
+      icon: <BadgeIndianRupee className="h-6 w-6" />,
+      iconStyle:
+        "border-amber-200 bg-amber-50 text-amber-700",
+      accentStyle:
+        "from-amber-500 via-orange-500 to-yellow-500",
+      glowStyle: "bg-amber-300/30",
+    },
+    {
+      title: "Search and Filters",
+      description:
+        "Quickly locate opportunities using customer details, stages, assignment, and workflow status.",
+      points: [
+        "Customer and company search",
+        "Pipeline-stage filtering",
+        "Sales representative filters",
+        "Contacted and proposal filters",
+      ],
+      icon: <Filter className="h-6 w-6" />,
+      iconStyle:
+        "border-rose-200 bg-rose-50 text-rose-700",
+      accentStyle:
+        "from-rose-500 via-pink-500 to-orange-500",
+      glowStyle: "bg-rose-300/30",
+    },
   ];
 
-  // Benefits – measurable impacts (like Analytics page)
-  const benefits = [
-    { metric: "35%", desc: "Higher sales conversions" },
-    { metric: "50%", desc: "Faster support resolution" },
-    { metric: "40%", desc: "Improved customer retention" },
-    { metric: "24/7", desc: "Real-time customer insights" }
+  const pipelineSteps: PipelineStep[] = [
+    {
+      number: "01",
+      stage: "New",
+      title: "Create the Opportunity",
+      description:
+        "Record the customer, company, software requirement, source, expected value, and responsible sales user.",
+      icon: <UserRoundSearch className="h-5 w-5" />,
+      style:
+        "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      number: "02",
+      stage: "Contacted",
+      title: "Begin the Conversation",
+      description:
+        "Confirm that the customer has been contacted and record the next follow-up action.",
+      icon: <Phone className="h-5 w-5" />,
+      style:
+        "border-cyan-200 bg-cyan-50 text-cyan-700",
+    },
+    {
+      number: "03",
+      stage: "Interested",
+      title: "Confirm Customer Interest",
+      description:
+        "Move the lead forward when the customer shows a genuine interest in the proposed solution.",
+      icon: <Target className="h-5 w-5" />,
+      style:
+        "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      number: "04",
+      stage: "Proposal Sent",
+      title: "Share the Commercial Proposal",
+      description:
+        "Record that pricing and project information have been presented to the customer.",
+      icon: <FileCheck2 className="h-5 w-5" />,
+      style:
+        "border-amber-200 bg-amber-50 text-amber-700",
+    },
+    {
+      number: "05",
+      stage: "Converted",
+      title: "Confirm the Sale",
+      description:
+        "Enter the final sale amount and convert the opportunity into an active business project.",
+      icon: <Handshake className="h-5 w-5" />,
+      style:
+        "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      number: "06",
+      stage: "Delivered",
+      title: "Complete the Handover",
+      description:
+        "Mark the sale as delivered after the software or service has been handed over to the customer.",
+      icon: <Package className="h-5 w-5" />,
+      style:
+        "border-indigo-200 bg-indigo-50 text-indigo-700",
+    },
+    {
+      number: "07",
+      stage: "Completed",
+      title: "Close the Operational Journey",
+      description:
+        "Complete the sales journey after delivery, final checks, required support, and remaining actions are finished.",
+      icon: <CheckCircle2 className="h-5 w-5" />,
+      style:
+        "border-teal-200 bg-teal-50 text-teal-700",
+    },
   ];
 
-  // Why choose us – 4 reasons
-  const whyChoose = [
-    "Scalable for startups to enterprises",
-    "Centralized customer visibility",
-    "Intelligent workflow automation",
-    "Cloud & mobile accessibility"
+  const roleItems: RoleItem[] = [
+    {
+      role: "Owner and Admin",
+      description:
+        "Complete visibility across the company sales pipeline and connected operations.",
+      permissions: [
+        "Create and assign leads",
+        "View every sales record",
+        "Update pipeline stages",
+        "Review sales reports",
+      ],
+      style:
+        "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      role: "Sales Representative",
+      description:
+        "A focused workspace for managing assigned opportunities and follow-ups.",
+      permissions: [
+        "View assigned leads",
+        "Create personal leads",
+        "Update permitted stages",
+        "Record follow-ups and notes",
+      ],
+      style:
+        "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      role: "Manager",
+      description:
+        "Review permitted sales activity and coordinate the responsible team.",
+      permissions: [
+        "Review team opportunities",
+        "Monitor pipeline progress",
+        "Assign permitted work",
+        "View authorised reports",
+      ],
+      style:
+        "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      role: "Permitted User",
+      description:
+        "Access only the sales tools and actions approved through portal permissions.",
+      permissions: [
+        "Permission-based visibility",
+        "Protected record access",
+        "Role-limited actions",
+        "Secure authenticated portal",
+      ],
+      style:
+        "border-cyan-200 bg-cyan-50 text-cyan-700",
+    },
   ];
 
-  // Industries – condensed list
-  const industries = [
-    "Retail & E-commerce", "Manufacturing", "Real Estate", "Healthcare",
-    "Financial Services", "IT Services", "Logistics", "Education"
+  const advantages: AdvantageItem[] = [
+    {
+      title: "Software Product Connection",
+      description:
+        "Use a shared software catalog so leads consistently reference the correct ERP, loyalty system, or custom solution.",
+      icon: <Layers3 className="h-5 w-5" />,
+      style:
+        "border-violet-200 bg-violet-50 text-violet-700",
+    },
+    {
+      title: "Payment Connection",
+      description:
+        "Record received payments separately and connect them with delivered projects or business sales.",
+      icon: <CircleDollarSign className="h-5 w-5" />,
+      style:
+        "border-emerald-200 bg-emerald-50 text-emerald-700",
+    },
+    {
+      title: "Project Creation",
+      description:
+        "Converted sales opportunities can become active projects with status, team assignment, and task tracking.",
+      icon: <BriefcaseBusiness className="h-5 w-5" />,
+      style:
+        "border-blue-200 bg-blue-50 text-blue-700",
+    },
+    {
+      title: "Commission Tracking",
+      description:
+        "Connect eligible sales and received amounts with commission calculations and payment history.",
+      icon: <BadgeIndianRupee className="h-5 w-5" />,
+      style:
+        "border-amber-200 bg-amber-50 text-amber-700",
+    },
+    {
+      title: "Maintenance Linkage",
+      description:
+        "Raise and manage project issues after delivery without losing the original sales and project connection.",
+      icon: <Workflow className="h-5 w-5" />,
+      style:
+        "border-cyan-200 bg-cyan-50 text-cyan-700",
+    },
+    {
+      title: "Sales Reporting",
+      description:
+        "Use connected CRM records to review pipeline movement, final sales, users, products, and outcomes.",
+      icon: <BarChart3 className="h-5 w-5" />,
+      style:
+        "border-rose-200 bg-rose-50 text-rose-700",
+    },
+  ];
+
+  const idealFor = [
+    "Software companies",
+    "Service businesses",
+    "Sales agencies",
+    "B2B companies",
+    "Startup sales teams",
+    "Growing SMEs",
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Animation keyframes (matching Analytics & Construction pages) */}
-      <style>{`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes gradient-x {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-fade-in-up { opacity: 0; animation: fade-in-up 0.7s ease-out forwards; }
-        .animate-delay-100 { animation-delay: 0.1s; }
-        .animate-delay-200 { animation-delay: 0.2s; }
-        .animate-delay-300 { animation-delay: 0.3s; }
-        .animate-gradient-x { background-size: 200% 200%; animation: gradient-x 3s ease infinite; }
-        @keyframes pulse-soft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
-        .animate-pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
-      `}</style>
+    <div className="overflow-hidden bg-white text-slate-900">
+      {/* Hero */}
+      <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+        <div
+          className="pointer-events-none absolute inset-0 -z-20 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+          }}
+        />
 
-      {/* HERO – gradient background, back link */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-white pt-28 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/50 via-white to-transparent pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-up">
-          <Link to="/solutions" className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 mb-6 transition-colors">
-            ← Back to Solutions
-          </Link>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Intelligent Customer{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 animate-gradient-x">
-              Relationship Management
-            </span>
-          </h1>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Strengthen customer relationships, streamline sales, and accelerate growth with a centralized CRM platform.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {tags.map((tag) => (
-              <span key={tag} className="px-4 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 shadow-sm">
-                {tag}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -left-44 -top-52 h-[540px] w-[540px] rounded-full bg-blue-300/25 blur-[140px]" />
+
+          <div className="absolute -bottom-52 right-[-130px] h-[570px] w-[570px] rounded-full bg-cyan-300/25 blur-[145px]" />
+        </div>
+
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.06fr_0.94fr] lg:gap-20 lg:px-10 lg:py-24 xl:px-16">
+          {/* Hero content */}
+          <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
+            <Link
+              to="/solutions"
+              className="group inline-flex items-center gap-2 text-sm font-bold text-blue-600 transition-colors hover:text-blue-700"
+            >
+              <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+
+              Back to Solutions
+            </Link>
+
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/85 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-700 shadow-sm backdrop-blur sm:text-xs">
+                <Sparkles
+                  className="h-4 w-4"
+                  strokeWidth={1.9}
+                />
+
+                Sales and Customer Management
               </span>
-            ))}
+            </div>
+
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
+              Follow Every Opportunity
+
+              <span className="block">
+                From the First Conversation
+              </span>
+
+              <span className="block bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
+                To Sale and Delivery.
+              </span>
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:mx-0">
+              Manage leads, customer information, sales ownership,
+              follow-ups, proposals, values, conversion, delivery, and
+              connected projects through one structured CRM workflow.
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {heroPoints.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 text-left text-sm font-semibold text-slate-700 shadow-sm backdrop-blur"
+                >
+                  <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                    <CheckIcon />
+                  </span>
+
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <a
+                href="#crm-features"
+                className="group inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl sm:w-auto sm:text-base"
+              >
+                Explore CRM Features
+
+                <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+
+              <Link
+                to="/contact"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl border border-slate-200 bg-white/90 px-7 py-3.5 text-sm font-bold text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:text-blue-700 hover:shadow-md sm:w-auto sm:text-base"
+              >
+                Request a Consultation
+              </Link>
+            </div>
+          </div>
+
+          {/* CRM dashboard preview */}
+          <div className="relative mx-auto w-full max-w-[610px]">
+            <div className="absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/25 blur-[100px]" />
+
+            <div className="relative overflow-hidden rounded-[26px] border border-slate-200 bg-white/95 shadow-[0_30px_90px_rgba(15,23,42,0.16)] backdrop-blur">
+              {/* Browser bar */}
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-rose-300" />
+                  <span className="h-3 w-3 rounded-full bg-amber-300" />
+                  <span className="h-3 w-3 rounded-full bg-emerald-300" />
+                </div>
+
+                <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+
+                  Sales CRM · Live
+                </div>
+              </div>
+
+              <div className="p-4 sm:p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                      Sales Overview
+                    </p>
+
+                    <h2 className="mt-1 text-xl font-bold text-slate-900">
+                      Opportunity Pipeline
+                    </h2>
+                  </div>
+
+                  <span className="rounded-xl border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700">
+                    This Month
+                  </span>
+                </div>
+
+                <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {[
+                    {
+                      label: "New Leads",
+                      value: "18",
+                      icon: <UserRoundSearch className="h-4 w-4" />,
+                      style:
+                        "border-blue-100 bg-blue-50 text-blue-700",
+                    },
+                    {
+                      label: "Proposals",
+                      value: "11",
+                      icon: <FileCheck2 className="h-4 w-4" />,
+                      style:
+                        "border-violet-100 bg-violet-50 text-violet-700",
+                    },
+                    {
+                      label: "Converted",
+                      value: "9",
+                      icon: <Handshake className="h-4 w-4" />,
+                      style:
+                        "border-emerald-100 bg-emerald-50 text-emerald-700",
+                    },
+                    {
+                      label: "Final Sales",
+                      value: "₹8.4L",
+                      icon: <BadgeIndianRupee className="h-4 w-4" />,
+                      style:
+                        "border-amber-100 bg-amber-50 text-amber-700",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className={`rounded-2xl border p-3 ${item.style}`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-current/10 bg-white/80">
+                          {item.icon}
+                        </span>
+
+                        <span className="text-lg font-extrabold sm:text-xl">
+                          {item.value}
+                        </span>
+                      </div>
+
+                      <p className="mt-3 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
+                        {item.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                        Pipeline Movement
+                      </p>
+
+                      <p className="mt-1 text-sm font-bold text-slate-800">
+                        38 active opportunities
+                      </p>
+                    </div>
+
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
+                      <GitBranch className="h-4 w-4" />
+                    </span>
+                  </div>
+
+                  <div className="mt-5 space-y-4">
+                    {[
+                      {
+                        label: "New Leads",
+                        value: "18",
+                        width: "78%",
+                        color: "bg-blue-500",
+                      },
+                      {
+                        label: "Contacted",
+                        value: "15",
+                        width: "66%",
+                        color: "bg-cyan-500",
+                      },
+                      {
+                        label: "Proposal Sent",
+                        value: "11",
+                        width: "52%",
+                        color: "bg-violet-500",
+                      },
+                      {
+                        label: "Converted",
+                        value: "9",
+                        width: "39%",
+                        color: "bg-emerald-500",
+                      },
+                    ].map((item) => (
+                      <div key={item.label}>
+                        <div className="flex justify-between text-[10px] font-semibold text-slate-500">
+                          <span>{item.label}</span>
+                          <span>{item.value}</span>
+                        </div>
+
+                        <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
+                          <div
+                            className={`h-full rounded-full ${item.color}`}
+                            style={{
+                              width: item.width,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-[1.12fr_0.88fr]">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-blue-600">
+                          Priority Opportunity
+                        </p>
+
+                        <p className="mt-1 text-sm font-bold text-slate-900">
+                          Retail Management Platform
+                        </p>
+                      </div>
+
+                      <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[8px] font-bold uppercase text-amber-600">
+                        High
+                      </span>
+                    </div>
+
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      <div className="rounded-xl bg-slate-50 p-3">
+                        <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-slate-400">
+                          Company
+                        </p>
+
+                        <p className="mt-1 text-xs font-bold text-slate-700">
+                          Sharma Retail
+                        </p>
+                      </div>
+
+                      <div className="rounded-xl bg-slate-50 p-3">
+                        <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-slate-400">
+                          Expected
+                        </p>
+
+                        <p className="mt-1 text-xs font-bold text-slate-700">
+                          ₹1,20,000
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-3 flex items-center gap-2 rounded-xl border border-blue-100 bg-blue-50 px-3 py-2.5">
+                      <CalendarClock className="h-4 w-4 text-blue-600" />
+
+                      <span className="text-[10px] font-semibold text-slate-600">
+                        Follow-up scheduled for tomorrow
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                      Lead Sources
+                    </p>
+
+                    <div className="mt-4 flex items-center justify-center">
+                      <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-[conic-gradient(#2563eb_0deg_150deg,#8b5cf6_150deg_245deg,#14b8a6_245deg_310deg,#f59e0b_310deg_360deg)]">
+                        <div className="flex h-[70px] w-[70px] flex-col items-center justify-center rounded-full bg-white">
+                          <span className="text-xl font-extrabold text-slate-900">
+                            38
+                          </span>
+
+                          <span className="text-[8px] font-bold uppercase tracking-[0.08em] text-slate-400">
+                            Leads
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 grid grid-cols-2 gap-2 text-[8px] font-bold text-slate-400">
+                      <span className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-blue-500" />
+                        Referral
+                      </span>
+
+                      <span className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-violet-500" />
+                        Website
+                      </span>
+
+                      <span className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-teal-500" />
+                        Calling
+                      </span>
+
+                      <span className="flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-amber-500" />
+                        Other
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-emerald-200 bg-white text-emerald-700">
+                    <CheckCircle2 className="h-5 w-5" />
+                  </span>
+
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-slate-800">
+                      Lead converted successfully
+                    </p>
+
+                    <p className="mt-1 truncate text-[10px] text-slate-500">
+                      Project and final sale details are now available
+                    </p>
+                  </div>
+
+                  <span className="ml-auto flex-none rounded-full bg-white px-2 py-1 text-[8px] font-bold uppercase text-emerald-600">
+                    Converted
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-xl sm:flex">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <CalendarClock className="h-5 w-5" />
+              </span>
+
+              <div>
+                <p className="text-xs font-bold text-slate-800">
+                  Follow-up reminder updated
+                </p>
+
+                <p className="mt-0.5 text-[9px] text-slate-500">
+                  Sales user notified inside the portal
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CORE FEATURES – card grid with icons */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl font-extrabold text-gray-900">Core CRM Features</h2>
-          <p className="text-gray-500 mt-2">Complete toolkit for sales, support, and marketing.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreFeatures.map((feat, i) => (
+      {/* Summary strip */}
+      <section className="border-y border-slate-300 bg-slate-100">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-2 gap-px bg-slate-300 px-px sm:grid-cols-4">
+          {[
+            {
+              title: "Capture",
+              value: "Leads",
+              icon: <UserRoundSearch className="h-5 w-5" />,
+            },
+            {
+              title: "Track",
+              value: "Pipeline",
+              icon: <GitBranch className="h-5 w-5" />,
+            },
+            {
+              title: "Convert",
+              value: "Sales",
+              icon: <Handshake className="h-5 w-5" />,
+            },
+            {
+              title: "Connect",
+              value: "Projects",
+              icon: <BriefcaseBusiness className="h-5 w-5" />,
+            },
+          ].map((item) => (
             <div
-              key={i}
-              className="group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 animate-fade-in-up"
-              style={{ animationDelay: `${(i % 3) * 0.1}s` }}
+              key={item.title}
+              className="flex min-h-[116px] items-center gap-4 bg-slate-100 px-5 py-5 sm:px-6"
             >
-              <div className="absolute left-0 top-0 h-full w-1 bg-blue-500 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex items-start gap-3 mb-4">
-                <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-50 text-blue-600 shrink-0">
-                  {feat.icon}
-                </span>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">{feat.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{feat.desc}</p>
-                </div>
+              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl border border-blue-200 bg-white text-blue-600 shadow-sm">
+                {item.icon}
+              </span>
+
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                  {item.title}
+                </p>
+
+                <p className="mt-1 text-sm font-bold text-slate-900 sm:text-base">
+                  {item.value}
+                </p>
               </div>
-              <ul className="space-y-2 mt-4">
-                {feat.points.map((p, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {p}
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ADVANCED CAPABILITIES – light blue background */}
-      <section className="bg-blue-50/50 border-y border-blue-100 py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 animate-fade-in-up">
-            <h2 className="text-3xl font-extrabold text-gray-900">Advanced CRM Capabilities</h2>
-            <p className="text-gray-500 mt-2">Automation, omnichannel, mobility, and security.</p>
+      {/* Core features */}
+      <section
+        id="crm-features"
+        className="relative isolate scroll-mt-24 overflow-hidden bg-slate-50"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #0f172a 1px, transparent 1px)",
+            backgroundSize: "18px 18px",
+          }}
+        />
+
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
+              Core CRM Modules
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Keep Every Customer Opportunity Structured and Visible
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Replace scattered notes, spreadsheets, and memory-based
+              follow-ups with one connected sales process that your
+              team can update and management can review.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {capabilities.map((cap, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{cap.title}</h3>
-                <ul className="space-y-3">
-                  {cap.points.map((p, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-gray-600">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">✓</span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {coreFeatures.map((feature) => (
+              <article
+                key={feature.title}
+                className="group relative h-full"
+              >
+                <div
+                  className={`pointer-events-none absolute -inset-2 rounded-[30px] opacity-10 blur-2xl transition-opacity duration-300 group-hover:opacity-40 ${feature.glowStyle}`}
+                />
+
+                <div className="relative flex h-full min-h-[390px] flex-col overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-[0_10px_35px_rgba(15,23,42,0.055)] transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-slate-300 group-hover:shadow-[0_22px_55px_rgba(15,23,42,0.11)]">
+                  <div
+                    className={`h-1 w-full bg-gradient-to-r ${feature.accentStyle}`}
+                  />
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <span
+                      className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${feature.iconStyle}`}
+                    >
+                      {feature.icon}
+                    </span>
+
+                    <h3 className="mt-5 text-xl font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                      {feature.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {feature.description}
+                    </p>
+
+                    <div className="mt-5 space-y-3 border-t border-slate-100 pt-5">
+                      {feature.points.map((point) => (
+                        <div
+                          key={point}
+                          className="flex items-start gap-2.5 text-sm leading-6 text-slate-600"
+                        >
+                          <span className="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                            <CheckIcon className="h-3.5 w-3.5" />
+                          </span>
+
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* BENEFITS + WHY CHOOSE + INDUSTRIES – two-column layout */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left: Measurable Impact */}
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900 mb-8 animate-fade-in-up">Measurable Impact</h2>
-            <div className="space-y-5">
-              {benefits.map((b, i) => (
-                <div key={i} className="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                  <div className="text-3xl font-extrabold text-blue-600 w-20 shrink-0">{b.metric}</div>
-                  <p className="text-gray-600">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Pipeline */}
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-20">
+            <div className="lg:sticky lg:top-28">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-violet-600">
+                Connected Sales Journey
+              </span>
 
-          {/* Right: Why Choose + Industries */}
-          <div className="space-y-10">
-            <div>
-              <h2 className="text-2xl font-extrabold text-gray-900 mb-6 animate-fade-in-up">Why Choose Our CRM</h2>
-              <div className="grid grid-cols-1 gap-3">
-                {whyChoose.map((reason, idx) => (
-                  <div key={reason} className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
-                    <span className="text-blue-500 text-lg">▹</span>
-                    <span className="text-gray-700 font-medium">{reason}</span>
-                  </div>
-                ))}
-              </div>
+              <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+                Move Every Opportunity Through a Clear Pipeline
+              </h2>
+
+              <p className="mt-5 text-base leading-8 text-slate-600">
+                Each stage should explain what has happened, what
+                information is required, and what becomes available
+                next. This keeps the sales team and management aligned.
+              </p>
+
+              <Link
+                to="/contact"
+                className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-violet-100 bg-violet-50 px-6 py-3 text-sm font-bold text-violet-700 transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:bg-violet-600 hover:text-white"
+              >
+                Discuss Your Sales Process
+
+                <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </div>
-            <div className="animate-fade-in-up">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Industries We Serve</h3>
-              <div className="flex flex-wrap gap-2">
-                {industries.map((ind) => (
-                  <span key={ind} className="px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-sm text-blue-700 font-medium hover:bg-blue-100 transition-colors cursor-default">
-                    {ind}
+
+            <div className="space-y-3">
+              {pipelineSteps.map((step, index) => (
+                <article
+                  key={step.number}
+                  className="group flex items-center gap-4 rounded-[20px] border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white hover:shadow-lg sm:p-5"
+                >
+                  <span
+                    className={`flex h-12 w-12 flex-none items-center justify-center rounded-2xl border ${step.style}`}
+                  >
+                    {step.icon}
                   </span>
-                ))}
-              </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-3">
+                      <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-blue-600">
+                        Step {step.number}
+                      </span>
+
+                      <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.1em] text-slate-500">
+                        {step.stage}
+                      </span>
+
+                      {index < pipelineSteps.length - 1 && (
+                        <span className="h-px flex-1 bg-slate-200" />
+                      )}
+                    </div>
+
+                    <h3 className="mt-2 text-base font-bold text-slate-900 sm:text-lg">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-1.5 text-sm leading-6 text-slate-600">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  <ArrowRight className="h-5 w-5 flex-none text-slate-300 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-500" />
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA – matching Analytics page style */}
-      <section className="max-w-4xl mx-auto px-6 pb-24 text-center">
-        <div className="bg-blue-600 rounded-3xl p-10 shadow-xl shadow-blue-200 animate-fade-in-up">
-          <h2 className="text-3xl font-extrabold text-white mb-4">Transform Your Customer Relationships</h2>
-          <p className="text-blue-100 mb-8 max-w-xl mx-auto">
-            Empower your business with an intelligent CRM solution designed for growth and efficiency.
-          </p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-600 rounded-xl text-sm font-bold hover:bg-blue-50 transition-colors shadow-md animate-pulse-soft">
-            Deploy CRM Architecture <span>→</span>
-          </Link>
+      {/* Role access */}
+      <section className="relative isolate overflow-hidden bg-slate-50">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+          }}
+        />
+
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-600">
+              Permission-Based Sales Access
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Give Every Sales Role the Right Level of Visibility
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              Owners need a complete pipeline view, while sales users
+              should primarily manage their assigned opportunities.
+              Portal permissions keep that access controlled.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {roleItems.map((item) => (
+              <article
+                key={item.role}
+                className="group rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl"
+              >
+                <span
+                  className={`inline-flex rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${item.style}`}
+                >
+                  {item.role}
+                </span>
+
+                <p className="mt-5 min-h-[90px] text-sm leading-7 text-slate-600">
+                  {item.description}
+                </p>
+
+                <div className="mt-5 space-y-3 border-t border-slate-100 pt-5">
+                  {item.permissions.map((permission) => (
+                    <div
+                      key={permission}
+                      className="flex items-start gap-2.5 text-xs font-semibold leading-5 text-slate-600"
+                    >
+                      <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                        <CheckIcon className="h-3.5 w-3.5" />
+                      </span>
+
+                      <span>{permission}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Connected modules */}
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-10 xl:px-16">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-blue-600">
+              CRM Connected With Operations
+            </span>
+
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              The Sales Record Should Continue After Conversion
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-600">
+              A converted opportunity should not become an isolated
+              completed entry. It can connect with projects, payments,
+              commissions, delivery, maintenance, and reports.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-2">
+              {idealFor.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {advantages.map((item) => (
+              <article
+                key={item.title}
+                className="group flex items-start gap-4 rounded-[20px] border border-slate-200 bg-slate-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-white hover:shadow-lg"
+              >
+                <span
+                  className={`flex h-11 w-11 flex-none items-center justify-center rounded-xl border ${item.style}`}
+                >
+                  {item.icon}
+                </span>
+
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 transition-colors group-hover:text-blue-600">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cloud CRM */}
+      <section className="relative isolate overflow-hidden bg-slate-950 text-white">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+          }}
+        />
+
+        <div className="pointer-events-none absolute -left-44 top-0 -z-10 h-[480px] w-[480px] rounded-full bg-blue-500/20 blur-[130px]" />
+
+        <div className="pointer-events-none absolute -bottom-52 right-[-100px] -z-10 h-[500px] w-[500px] rounded-full bg-cyan-500/15 blur-[135px]" />
+
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20 lg:px-10 lg:py-24 xl:px-16">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-300">
+              <Cloud className="h-4 w-4" />
+
+              Cloud Sales Management
+            </span>
+
+            <h2 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Keep the Sales Pipeline Available to the Team Wherever Work Happens
+            </h2>
+
+            <p className="mt-5 text-base leading-8 text-slate-300">
+              Authorised sales users and managers can review permitted
+              opportunities, follow-ups, notes, and pipeline movement
+              through a responsive cloud platform.
+            </p>
+
+            <Link
+              to="/why-choose-us"
+              className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/15"
+            >
+              Why Choose AeroState
+
+              <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {[
+              {
+                title: "Responsive CRM",
+                description:
+                  "Create, review, and update permitted opportunities from phones, tablets, laptops, and desktops.",
+                icon: <MonitorSmartphone className="h-6 w-6" />,
+              },
+              {
+                title: "Secure Role Access",
+                description:
+                  "Restrict customer, value, and pipeline information through portal permissions.",
+                icon: <ShieldCheck className="h-6 w-6" />,
+              },
+              {
+                title: "Centralised Customer Records",
+                description:
+                  "Keep customer details, notes, stages, values, and follow-ups together.",
+                icon: <FileText className="h-6 w-6" />,
+              },
+              {
+                title: "Searchable Opportunities",
+                description:
+                  "Use customer, company, status, user, and pipeline filters to locate records quickly.",
+                icon: <Search className="h-6 w-6" />,
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[20px] border border-white/10 bg-white/[0.06] p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/30 hover:bg-white/[0.09]"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-blue-300">
+                  {item.icon}
+                </span>
+
+                <h3 className="mt-5 text-lg font-bold text-white">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-16">
+          <div className="relative isolate overflow-hidden rounded-[28px] bg-gradient-to-r from-blue-700 via-blue-600 to-teal-600 px-6 py-12 text-center shadow-[0_30px_80px_rgba(37,99,235,0.25)] sm:px-10 sm:py-16">
+            <div
+              className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                backgroundSize: "34px 34px",
+              }}
+            />
+
+            <div className="pointer-events-none absolute -left-32 -top-40 -z-10 h-[360px] w-[360px] rounded-full bg-cyan-300/30 blur-[100px]" />
+
+            <div className="pointer-events-none absolute -bottom-48 right-[-100px] -z-10 h-[420px] w-[420px] rounded-full bg-teal-300/30 blur-[110px]" />
+
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-50 backdrop-blur sm:text-xs">
+              <MessageSquareText className="h-4 w-4" />
+
+              Discuss Your Sales Workflow
+            </span>
+
+            <h2 className="mx-auto mt-6 max-w-4xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Build a CRM Around How Your Team Actually Finds and Converts Customers
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-blue-50">
+              Tell us how leads currently arrive, who manages them,
+              how follow-ups are recorded, when values are confirmed,
+              and what should happen after conversion. We will help
+              structure that process into one connected sales platform.
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                to="/contact"
+                className="group inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-blue-700 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-auto sm:text-base"
+              >
+                Request CRM Consultation
+
+                <ArrowIcon className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              <Link
+                to="/products/business-operations-management-system"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 sm:w-auto sm:text-base"
+              >
+                Explore Business System
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
