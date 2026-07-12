@@ -6,7 +6,6 @@ import {
   ArrowRight,
   BarChart3,
   Building2,
-  CalendarDays,
   Check,
   CheckCircle2,
   CircleDollarSign,

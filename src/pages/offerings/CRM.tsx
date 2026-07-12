@@ -7,7 +7,6 @@ import {
   BadgeIndianRupee,
   BarChart3,
   BriefcaseBusiness,
-  Building2,
   CalendarClock,
   Check,
   CheckCircle2,
@@ -19,8 +18,6 @@ import {
   GitBranch,
   Handshake,
   Layers3,
-  LockKeyhole,
-  Mail,
   MessageSquareText,
   MonitorSmartphone,
   Package,
@@ -31,7 +28,6 @@ import {
   Target,
   UserCheck,
   UserRoundSearch,
-  Users,
   Workflow,
 } from "lucide-react";
 

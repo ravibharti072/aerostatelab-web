@@ -119,33 +119,6 @@ function CloudIcon() {
   );
 }
 
-function CurrencyIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="h-6 w-6"
-      aria-hidden="true"
-    >
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        stroke="currentColor"
-        strokeWidth="1.7"
-      />
-
-      <path
-        d="M9 8h6m-6 3h6m-5-3c3 0 4 1 4 3s-1.5 3-4 3h-1l5 3"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function ShieldIcon() {
   return (
     <svg
@@ -460,11 +433,11 @@ function WhyChooseUs() {
         "Secure cloud deployment",
         "Centralised business data",
         "Multi-location access",
-        "Automated backup options",
+        "Backup and recovery options",
         "Expandable server infrastructure",
       ],
       result:
-        "Your authorised team can securely access current business information from the office, field, or another branch.",
+        "Your authorised team can access permitted business information from the office, field, or another branch.",
       icon: <CloudIcon />,
       iconStyle:
         "border-blue-200 bg-blue-50 text-blue-700",
@@ -518,16 +491,16 @@ function WhyChooseUs() {
       title: "API and Platform Integrations",
       subtitle: "Connect Your Business Tools",
       description:
-        "Connect your AeroState system with external services, payment providers, messaging platforms, and other software.",
+        "Connect your AeroState system with external services, payment providers, messaging platforms, and other software when required.",
       capabilities: [
         "REST API architecture",
-        "Payment integrations",
-        "WhatsApp integrations",
+        "Optional payment integrations",
+        "Optional WhatsApp integrations",
         "Third-party software connectivity",
         "Webhook-based data updates",
       ],
       result:
-        "Your systems work together and reduce repeated entry, disconnected records, and manual information transfer.",
+        "Connected systems can reduce repeated entry, disconnected records, and manual information transfer.",
       icon: <ApiIcon />,
       iconStyle:
         "border-indigo-200 bg-indigo-50 text-indigo-700",
@@ -562,7 +535,7 @@ function WhyChooseUs() {
       description:
         "Bring information from sales, payments, customers, projects, employees, and operations into useful reporting views.",
       capabilities: [
-        "Real-time dashboards",
+        "Current operational dashboards",
         "Operational summaries",
         "Sales and payment reports",
         "Custom report filters",
@@ -590,7 +563,7 @@ function WhyChooseUs() {
         "Deployment guidance",
       ],
       result:
-        "You gain a long-term technology partner instead of receiving software that becomes outdated after delivery.",
+        "You gain an ongoing technology partner who can help improve the system as your requirements change.",
       icon: <SupportIcon />,
       iconStyle:
         "border-teal-200 bg-teal-50 text-teal-700",
@@ -610,7 +583,7 @@ function WhyChooseUs() {
         "border-orange-200 bg-orange-50 text-orange-700",
     },
     {
-      title: "Retail & POS",
+      title: "Retail and POS",
       description: "Billing, loyalty and store operations",
       path: "/industries/retail",
       iconText: "RT",
@@ -684,7 +657,7 @@ function WhyChooseUs() {
       number: "03",
       title: "Build and Validate",
       description:
-        "The system is developed in phases and tested against real operational scenarios and user requirements.",
+        "The system is developed in phases and tested against practical operational scenarios and user requirements.",
     },
     {
       number: "04",
@@ -738,7 +711,7 @@ function WhyChooseUs() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg lg:mx-0">
-              AeroState Lab builds secure, scalable, and easy-to-use
+              AeroState Lab builds secure, scalable, and practical
               cloud systems that connect people, customers, data,
               payments, projects, and business operations.
             </p>
@@ -870,7 +843,7 @@ function WhyChooseUs() {
               </div>
 
               <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                   <div>
                     <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
                       System Alignment
@@ -881,20 +854,31 @@ function WhyChooseUs() {
                     </p>
                   </div>
 
-                  <span className="text-xl font-bold text-blue-600">
-                    100%
+                  <span className="w-fit rounded-full border border-blue-200 bg-white px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.1em] text-blue-700">
+                    Business Fit
                   </span>
                 </div>
 
-                <div className="mt-3 h-2 overflow-hidden rounded-full bg-white">
-                  <div className="h-full w-full rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500" />
+                <div className="mt-4 grid grid-cols-3 gap-2">
+                  {[
+                    "Users",
+                    "Workflows",
+                    "Reports",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-xl border border-slate-200 bg-white px-2 py-2.5 text-center text-[9px] font-bold uppercase tracking-[0.08em] text-slate-500"
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {[
                   "Cloud",
-                  "Secure",
+                  "Controlled",
                   "Flexible",
                   "Responsive",
                 ].map((item) => (
@@ -935,7 +919,7 @@ function WhyChooseUs() {
         </div>
       </section>
 
-      {/* Feature section */}
+      {/* Features */}
       <section className="relative isolate overflow-hidden bg-slate-50">
         <div
           className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
@@ -958,9 +942,8 @@ function WhyChooseUs() {
 
             <p className="mt-5 text-base leading-8 text-slate-600">
               We combine custom development, secure cloud
-              architecture, practical user experience, and
-              long-term scalability into one connected software
-              platform.
+              architecture, practical user experience, and long-term
+              scalability into one connected software platform.
             </p>
           </div>
 
@@ -1043,14 +1026,14 @@ function WhyChooseUs() {
               </h2>
 
               <p className="mt-5 text-base leading-8 text-slate-600">
-                We follow a structured process that keeps the
-                software connected to real business requirements
-                from initial planning through deployment and future
+                We follow a structured process that keeps the software
+                connected to practical business requirements from
+                initial planning through deployment and future
                 improvement.
               </p>
 
               <Link
-                to="/services"
+                to="/our-approach"
                 className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-blue-100 bg-blue-50 px-6 py-3 text-sm font-bold text-blue-700 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-600 hover:text-white"
               >
                 View Our Complete Approach
@@ -1186,8 +1169,8 @@ function WhyChooseUs() {
 
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-blue-50">
               Tell us about your current processes, challenges, and
-              goals. We will help you plan a secure cloud platform
-              designed around your business.
+              goals. We will help you plan a cloud platform designed
+              around your business.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

@@ -14,7 +14,6 @@ import {
   LockKeyhole,
   Map,
   MessageSquareMore,
-  Rocket,
   Server,
   ShieldCheck,
   Smartphone,

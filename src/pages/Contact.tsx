@@ -11,7 +11,6 @@ import {
   Building2,
   Check,
   CheckCircle2,
-  Clock3,
   Code2,
   FileText,
   Layers3,
