@@ -23,7 +23,6 @@ import {
   MessageSquareText,
   MonitorSmartphone,
   PackageCheck,
-  PackageSearch,
   Receipt,
   Search,
   ShieldCheck,
@@ -32,7 +31,6 @@ import {
   Users,
   UtensilsCrossed,
   Workflow,
-  Wrench,
 } from "lucide-react";
 
 interface FeatureItem {

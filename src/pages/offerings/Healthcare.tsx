@@ -2,7 +2,6 @@ import { useEffect, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import {
-  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   BarChart3,
@@ -16,7 +15,6 @@ import {
   ClipboardCheck,
   Cloud,
   FileCheck2,
-  FileText,
   IndianRupee,
   Layers3,
   LockKeyhole,

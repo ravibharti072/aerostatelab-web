@@ -18,7 +18,6 @@ import {
   FileText,
   HandCoins,
   IndianRupee,
-  Landmark,
   Layers3,
   LockKeyhole,
   MessageSquareText,
@@ -28,7 +27,6 @@ import {
   ShieldCheck,
   Sparkles,
   TrendingUp,
-  Users,
   WalletCards,
   Workflow,
 } from "lucide-react";

@@ -17,7 +17,6 @@ import {
   Factory,
   FileCheck2,
   Gauge,
-  IndianRupee,
   Layers3,
   LockKeyhole,
   MessageSquareText,
@@ -30,7 +29,6 @@ import {
   Sparkles,
   Store,
   Users,
-  Warehouse,
   Workflow,
   Wrench,
 } from "lucide-react";

@@ -6,7 +6,6 @@ import {
   ArrowLeft,
   ArrowRight,
   BarChart3,
-  Boxes,
   Building2,
   CalendarClock,
   Check,

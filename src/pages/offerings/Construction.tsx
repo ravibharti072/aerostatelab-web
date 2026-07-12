@@ -9,7 +9,6 @@ import {
   Boxes,
   BriefcaseBusiness,
   Building2,
-  CalendarClock,
   Check,
   CheckCircle2,
   CircleDollarSign,
